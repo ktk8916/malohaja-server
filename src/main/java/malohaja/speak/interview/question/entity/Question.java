@@ -1,11 +1,11 @@
-package malohaja.speak.domain.question.entity;
+package malohaja.speak.interview.question.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import malohaja.speak.domain.BaseEntity;
-import malohaja.speak.domain.member.entity.Member;
+import malohaja.speak.global.domain.BaseEntity;
+import malohaja.speak.member.entity.Member;
 
 import java.util.ArrayList;
 import java.util.List;

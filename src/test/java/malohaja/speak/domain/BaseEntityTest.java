@@ -1,5 +1,6 @@
 package malohaja.speak.domain;
 
+import malohaja.speak.global.domain.BaseEntity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

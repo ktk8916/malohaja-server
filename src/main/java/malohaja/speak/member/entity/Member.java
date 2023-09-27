@@ -1,4 +1,4 @@
-package malohaja.speak.domain.member.entity;
+package malohaja.speak.member.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import malohaja.speak.domain.BaseEntity;
+import malohaja.speak.global.domain.BaseEntity;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

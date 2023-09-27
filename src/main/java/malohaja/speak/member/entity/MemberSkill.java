@@ -1,10 +1,10 @@
-package malohaja.speak.domain.member.entity;
+package malohaja.speak.member.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import malohaja.speak.domain.skill.SkillType;
+import malohaja.speak.global.domain.skill.SkillType;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

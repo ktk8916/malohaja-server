@@ -1,4 +1,4 @@
-package malohaja.speak.domain;
+package malohaja.speak.global.domain;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;

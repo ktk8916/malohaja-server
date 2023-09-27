@@ -1,4 +1,4 @@
-package malohaja.speak.domain.skill;
+package malohaja.speak.global.domain.skill;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
