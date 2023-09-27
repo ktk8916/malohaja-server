@@ -1,4 +1,4 @@
-package malohaja.speak.interview.question.entity;
+package malohaja.speak.interview.question.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
