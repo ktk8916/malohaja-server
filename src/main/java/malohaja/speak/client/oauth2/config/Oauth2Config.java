@@ -1,6 +1,8 @@
-package malohaja.speak.client.oauth2;
+package malohaja.speak.client.oauth2.config;
 
 import lombok.RequiredArgsConstructor;
+import malohaja.speak.client.oauth2.domain.Oauth2Provider;
+import malohaja.speak.client.oauth2.service.Oauth2ProviderFactory;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

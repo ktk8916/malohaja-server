@@ -1,4 +1,6 @@
-package malohaja.speak.client.oauth2;
+package malohaja.speak.client.oauth2.config;
+
+import malohaja.speak.client.oauth2.domain.Oauth2Provider;
 
 import java.util.HashMap;
 import java.util.Map;

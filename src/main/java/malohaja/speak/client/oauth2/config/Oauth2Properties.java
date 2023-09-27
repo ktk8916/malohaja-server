@@ -1,4 +1,4 @@
-package malohaja.speak.client.oauth2;
+package malohaja.speak.client.oauth2.config;
 
 import lombok.Getter;
 import lombok.Setter;

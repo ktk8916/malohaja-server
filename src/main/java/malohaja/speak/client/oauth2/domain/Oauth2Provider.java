@@ -1,7 +1,8 @@
-package malohaja.speak.client.oauth2;
+package malohaja.speak.client.oauth2.domain;
 
 import lombok.Builder;
 import lombok.Getter;
+import malohaja.speak.client.oauth2.config.Oauth2Properties;
 
 @Getter
 public class Oauth2Provider {
