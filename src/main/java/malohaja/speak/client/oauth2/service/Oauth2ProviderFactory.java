@@ -14,6 +14,14 @@ public class Oauth2ProviderFactory {
     }
 
     public Oauth2Provider getByProviderName(String name) {
+        if(!isValidOauth2Provider(name)){
+            throw new IllegalArgumentException("not supported oauth2 provider");
+        }
+
         return providers.get(name);
+    }
+
+    private boolean isValidOauth2Provider(String name){
+        return providers.containsKey(name);
     }
 }
