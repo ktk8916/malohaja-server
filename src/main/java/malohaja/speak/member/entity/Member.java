@@ -30,9 +30,11 @@ public class Member extends BaseEntity {
     }
 
     @Builder
-    public Member(String providerId, String providerName, Role role) {
+    public Member(String providerId, String providerName, String nickName, String profileImageUri, Role role) {
         this.providerId = providerId;
         this.providerName = providerName;
+        this.nickName = nickName;
+        this.profileImageUri = profileImageUri;
         this.role = role;
     }
 }
