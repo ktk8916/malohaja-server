@@ -11,23 +11,23 @@ class BaseEntityTest {
     @DisplayName("entity가 생성되면 삭제여부가 false이다.")
     @Test
     void createBaseEntity(){
-        //given
+        // given
         BaseEntity baseEntity = new BaseEntity() {};
 
-        //then, when
+        // then, when
         assertThat(baseEntity.isDeleted()).isFalse();
     }
 
     @DisplayName("entity를 삭제하면 삭제일이 업데이트 되고, 삭제여부가 true가 된다.")
     @Test
     void baseEntityDelete(){
-        //given
+        // given
         BaseEntity baseEntity = new BaseEntity() {};
 
-        //then
+        // then
         baseEntity.delete();
 
-        //when
+        // when
         assertThat(baseEntity.getDeletedAt()).isNotNull();
         assertThat(baseEntity.isDeleted()).isTrue();
     }
