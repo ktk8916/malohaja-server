@@ -28,7 +28,7 @@ class Oauth2ProviderFactoryTest {
         );
     }
 
-    @DisplayName("")
+    @DisplayName("providerName으로 생성된 Oauth2Provider를 가져온다.")
     @ParameterizedTest
     @MethodSource("oauth2ProviderTokenUri")
     void getByProviderName(String providerName, String tokenUri){
