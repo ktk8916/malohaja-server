@@ -82,6 +82,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-configuration-processor'
 
+    //firebase
+    implementation group: 'com.google.firebase', name: 'firebase-admin', version: '8.1.0'
 
     //jwt
     implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
