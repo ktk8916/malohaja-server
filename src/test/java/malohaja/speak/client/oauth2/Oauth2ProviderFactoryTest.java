@@ -1,8 +1,9 @@
 package malohaja.speak.client.oauth2;
 
+import malohaja.speak.client.oauth2.domain.Oauth2Provider;
+import malohaja.speak.client.oauth2.service.Oauth2ProviderFactory;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -11,8 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.stream.Stream;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("dev")
