@@ -1,10 +1,8 @@
 package malohaja.speak.member.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import malohaja.speak.global.domain.BaseEntity;
@@ -18,6 +16,23 @@ public class Member extends BaseEntity {
     private Long id;
     private String providerId;
     private String providerName;
-    private String name;
     private String nickName;
+    private String profileImageUri;
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    public static Member createMemberWithOauth2(String providerId, String providerName){
+        return Member.builder()
+                .providerId(providerId)
+                .providerName(providerName)
+                .role(Role.UNAFFILIATED)
+                .build();
+    }
+
+    @Builder
+    public Member(String providerId, String providerName, Role role) {
+        this.providerId = providerId;
+        this.providerName = providerName;
+        this.role = role;
+    }
 }
