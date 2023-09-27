@@ -42,7 +42,7 @@ public class Oauth2Service {
     private Map<String, Object> getUserAttributes(Oauth2Provider provider, Oauth2TokenDto tokenDto) {
         return WebClient.create()
                 .get()
-                .uri(provider.getUserInfoUrl())
+                .uri(provider.getUserInfoUri())
                 .headers(header -> header.setBearerAuth(tokenDto.accessToken()))
                 .retrieve()
                 .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
@@ -52,7 +52,7 @@ public class Oauth2Service {
     private Oauth2TokenDto getToken(Oauth2Provider provider, String code) {
         return WebClient.create()
                 .post()
-                .uri(provider.getTokenUrl())
+                .uri(provider.getTokenUri())
                 .headers(header -> {
                     header.setBasicAuth(provider.getClientId(), provider.getClientSecret());
                     header.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -71,7 +71,7 @@ public class Oauth2Service {
         formData.add("client_id", provider.getClientId());
         formData.add("client_secret", provider.getClientSecret());
         formData.add("grant_type", "authorization_code");
-        formData.add("redirect_uri", provider.getRedirectUrl());
+        formData.add("redirect_uri", provider.getRedirectUri());
         return formData;
     }
 }

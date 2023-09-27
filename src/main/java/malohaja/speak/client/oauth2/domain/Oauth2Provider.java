@@ -9,9 +9,9 @@ public class Oauth2Provider {
 
     private final String clientId;
     private final String clientSecret;
-    private final String redirectUrl;
-    private final String tokenUrl;
-    private final String userInfoUrl;
+    private final String redirectUri;
+    private final String tokenUri;
+    private final String userInfoUri;
 
     public Oauth2Provider(Oauth2Properties.Client client) {
         this(
@@ -24,11 +24,11 @@ public class Oauth2Provider {
     }
 
     @Builder
-    public Oauth2Provider(String clientId, String clientSecret, String redirectUrl, String tokenUrl, String userInfoUrl) {
+    public Oauth2Provider(String clientId, String clientSecret, String redirectUri, String tokenUri, String userInfoUri) {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
-        this.redirectUrl = redirectUrl;
-        this.tokenUrl = tokenUrl;
-        this.userInfoUrl = userInfoUrl;
+        this.redirectUri = redirectUri;
+        this.tokenUri = tokenUri;
+        this.userInfoUri = userInfoUri;
     }
 }
