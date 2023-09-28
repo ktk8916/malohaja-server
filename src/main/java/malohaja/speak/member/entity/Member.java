@@ -1,10 +1,7 @@
 package malohaja.speak.member.entity;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import malohaja.speak.global.domain.BaseEntity;
 
 @Entity
@@ -21,10 +18,10 @@ public class Member extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public static Member createMemberWithOauth2(String providerId, String providerName){
+    public static Member createMemberWithOauth2(String providerName, String providerId){
         return Member.builder()
-                .providerId(providerId)
                 .providerName(providerName)
+                .providerId(providerId)
                 .role(Role.UNAFFILIATED)
                 .build();
     }
