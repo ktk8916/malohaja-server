@@ -9,9 +9,11 @@ import malohaja.speak.member.entity.Member;
 import malohaja.speak.member.entity.Role;
 import malohaja.speak.member.repository.MemberRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class AuthService {
 
     private final Oauth2Service oauth2Service;
@@ -25,8 +27,7 @@ public class AuthService {
 
         return AuthenticationResponse.of(
                 getRedirect(member),
-                jwtService.generateToken(member),
-                generateRefreshToken(member)
+                jwtService.generateToken(member)
         );
     }
 
@@ -40,14 +41,6 @@ public class AuthService {
 
     private String getRedirect(Member member){
         return member.getRole()== Role.UNAFFILIATED ? "/signup" : "/";
-    }
-
-    private String generateRefreshToken(Member member){
-        if(member.getRole()==Role.UNAFFILIATED){
-            return "not supported";
-        }
-
-        return jwtService.generateToken(member);
     }
 }
 
