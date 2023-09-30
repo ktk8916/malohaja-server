@@ -4,6 +4,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import malohaja.speak.member.entity.Member;
+import malohaja.speak.member.entity.Role;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -17,16 +18,16 @@ public class JwtService {
     @Value("${jwt.secret}")
     private String secret;
     
-    //access token 유효기간 : 3시간
-    private final long EXPIRATION_DATE = 1000L * 60 * 60 * 3; 
+    //access token 유효기간 : 12시간
+    private final long EXPIRATION_DATE = 1000L * 60 * 60 * 12;
 
     public TokenInfo extractUser(String token){
         Claims claims = extractAllClaims(token);
         return TokenInfo.builder()
                 .id(claims.get("id", Long.class))
-
                 .providerName(claims.get("providerName", String.class))
                 .providerId(claims.get("providerId", String.class))
+                .role(Role.valueOf(claims.get("role", String.class)))
                 .build();
     }
     private String generateToken(
@@ -47,6 +48,7 @@ public class JwtService {
         extraClaims.put("id", member.getId());
         extraClaims.put("providerName", member.getProviderName());
         extraClaims.put("providerId", member.getProviderId());
+        extraClaims.put("role", member.getRole().name());
 
         return generateToken(extraClaims, member);
     }
