@@ -1,7 +1,7 @@
 package malohaja.speak.global.jwt;
 
-import malohaja.speak.member.entity.Member;
-import malohaja.speak.member.entity.Role;
+import malohaja.speak.member.domain.entity.Member;
+import malohaja.speak.member.domain.entity.Role;
 import malohaja.speak.member.repository.MemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +12,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
-@ActiveProfiles("dev")
+@ActiveProfiles("test")
 @Transactional
 class JwtServiceTest {
 

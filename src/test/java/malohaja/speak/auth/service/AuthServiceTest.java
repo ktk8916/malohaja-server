@@ -3,8 +3,8 @@ package malohaja.speak.auth.service;
 import malohaja.speak.auth.domain.response.AuthenticationResponse;
 import malohaja.speak.client.oauth2.domain.Oauth2UserInfoDto;
 import malohaja.speak.client.oauth2.service.Oauth2Service;
-import malohaja.speak.member.entity.Member;
-import malohaja.speak.member.entity.Role;
+import malohaja.speak.member.domain.entity.Member;
+import malohaja.speak.member.domain.entity.Role;
 import malohaja.speak.member.repository.MemberRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional
-@ActiveProfiles("dev")
+@ActiveProfiles("test")
 class AuthServiceTest {
 
     @Autowired
