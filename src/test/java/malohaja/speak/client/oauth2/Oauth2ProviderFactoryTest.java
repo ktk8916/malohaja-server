@@ -1,6 +1,7 @@
 package malohaja.speak.client.oauth2;
 
 import malohaja.speak.client.oauth2.domain.Oauth2Provider;
+import malohaja.speak.client.oauth2.exception.NoSupportedOauth2Exception;
 import malohaja.speak.client.oauth2.service.Oauth2ProviderFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,7 +32,7 @@ class Oauth2ProviderFactoryTest {
 
         // when, then
         assertThatThrownBy(()->oauth2ProviderFactory.getByProviderName(inValidOauth2ProviderName))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(NoSupportedOauth2Exception.class);
     }
 
     private static Stream<Arguments> oauth2ProviderTokenUri(){

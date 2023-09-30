@@ -1,6 +1,7 @@
 package malohaja.speak.client.oauth2.service;
 
 import malohaja.speak.client.oauth2.domain.Oauth2Provider;
+import malohaja.speak.client.oauth2.exception.NoSupportedOauth2Exception;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,9 +16,8 @@ public class Oauth2ProviderFactory {
 
     public Oauth2Provider getByProviderName(String name) {
         if(!isValidOauth2Provider(name)){
-            throw new IllegalArgumentException("not supported oauth2 provider");
+            throw new NoSupportedOauth2Exception();
         }
-
         return providers.get(name);
     }
 
