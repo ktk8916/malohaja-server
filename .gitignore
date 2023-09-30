@@ -37,3 +37,4 @@ out/
 .vscode/
 /src/main/resources/application-dev.yml
 /src/main/resources/firebase-account-key.json
+/src/main/resources/application-test.yml
