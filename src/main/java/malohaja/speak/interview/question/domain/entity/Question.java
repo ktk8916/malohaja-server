@@ -2,13 +2,15 @@ package malohaja.speak.interview.question.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import malohaja.speak.global.domain.BaseEntity;
-import malohaja.speak.member.entity.Member;
+import malohaja.speak.global.domain.skill.SkillType;
+import malohaja.speak.member.domain.entity.Member;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -19,7 +21,14 @@ public class Question extends BaseEntity {
     private Long id;
     @ManyToOne
     private Member member;
-    @OneToMany(mappedBy = "question")
-    private List<QuestionSkill> skills = new ArrayList<>();
+    private Set<SkillType> skills = new HashSet<>();
     private String content;
+    private int likeCount;
+
+    @Builder
+    public Question(Member member, Set<SkillType> skills, String content) {
+        this.member = member;
+        this.skills = skills;
+        this.content = content;
+    }
 }
