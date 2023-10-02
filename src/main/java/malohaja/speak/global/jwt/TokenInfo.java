@@ -2,7 +2,7 @@ package malohaja.speak.global.jwt;
 
 import lombok.Builder;
 import lombok.Getter;
-import malohaja.speak.member.entity.Role;
+import malohaja.speak.member.domain.entity.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

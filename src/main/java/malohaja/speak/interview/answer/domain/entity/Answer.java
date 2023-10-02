@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import malohaja.speak.global.domain.BaseEntity;
 import malohaja.speak.interview.question.domain.entity.Question;
-import malohaja.speak.member.entity.Member;
+import malohaja.speak.member.domain.entity.Member;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
