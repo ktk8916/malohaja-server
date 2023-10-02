@@ -3,8 +3,8 @@ package malohaja.speak.global.jwt;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import malohaja.speak.member.entity.Member;
-import malohaja.speak.member.entity.Role;
+import malohaja.speak.member.domain.entity.Member;
+import malohaja.speak.member.domain.entity.Role;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -51,6 +51,15 @@ public class JwtService {
         extraClaims.put("role", member.getRole().name());
 
         return generateToken(extraClaims, member);
+    }
+
+    public boolean isValidToken(String token){
+        try{
+            TokenInfo tokenInfo = extractUser(token);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
     }
 
     private Claims extractAllClaims(String token) {
