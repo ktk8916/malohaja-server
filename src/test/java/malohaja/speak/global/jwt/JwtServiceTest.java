@@ -39,7 +39,7 @@ class JwtServiceTest {
         TokenInfo tokenInfo = jwtService.extractUser(token);
 
         // then
-        Assertions.assertThat(tokenInfo.getId()).isEqualTo(1L);
+        Assertions.assertThat(tokenInfo.getId()).isEqualTo(savedMember.getId());
         Assertions.assertThat(tokenInfo.getProviderName()).isEqualTo("kakao");
         Assertions.assertThat(tokenInfo.getProviderId()).isEqualTo("kakaoId");
         Assertions.assertThat(tokenInfo.getRole()).isEqualTo(Role.MEMBER);
