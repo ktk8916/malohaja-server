@@ -25,10 +25,15 @@ public class Question extends BaseEntity {
     private String content;
     private int likeCount;
 
+    public void update(String content, Set<SkillType> skills){
+        this.skills = skills;
+        this.content = content;
+    }
+
     @Builder
     public Question(Member member, Set<SkillType> skills, String content) {
         this.member = member;
-        this.skills = skills;
         this.content = content;
+        this.skills = skills;
     }
 }
