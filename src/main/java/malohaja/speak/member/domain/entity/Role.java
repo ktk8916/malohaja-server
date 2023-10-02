@@ -1,4 +1,4 @@
-package malohaja.speak.member.entity;
+package malohaja.speak.member.domain.entity;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
