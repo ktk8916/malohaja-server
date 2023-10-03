@@ -8,6 +8,7 @@ import malohaja.speak.interview.question.domain.response.QuestionDetailResponse;
 import malohaja.speak.interview.question.domain.response.QuestionResponse;
 import malohaja.speak.interview.question.service.QuestionCommandService;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,8 +20,10 @@ public class QuestionCommandController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public QuestionResponse questionCreate(@RequestBody QuestionCreateRequest request){
-        TokenInfo tokenInfo = TokenInfo.builder().id(1L).build();
+    public QuestionResponse questionCreate(
+            @AuthenticationPrincipal TokenInfo tokenInfo,
+            @RequestBody QuestionCreateRequest request
+    ){
         return questionCommandService.questionCreate(tokenInfo, request);
     }
 

@@ -55,7 +55,7 @@ class QuestionCommandServiceTest {
         QuestionCreateRequest request = new QuestionCreateRequest("di가 무엇인가요 ?", skills);
 
         Member member = Member.builder()
-                .nickName("취준생")
+                .nickname("취준생")
                 .providerName("kakao")
                 .providerId("kakaoId")
                 .profileImageUri("image")
@@ -83,7 +83,7 @@ class QuestionCommandServiceTest {
         QuestionCreateRequest createRequest = new QuestionCreateRequest("di가 무엇인가요 ?", skills);
 
         Member member = Member.builder()
-                .nickName("취준생")
+                .nickname("취준생")
                 .providerName("kakao")
                 .providerId("kakaoId")
                 .profileImageUri("image")
@@ -116,7 +116,7 @@ class QuestionCommandServiceTest {
         QuestionCreateRequest createRequest = new QuestionCreateRequest("di가 무엇인가요 ?", skills);
 
         Member member = Member.builder()
-                .nickName("취준생")
+                .nickname("취준생")
                 .providerName("kakao")
                 .providerId("kakaoId")
                 .profileImageUri("image")
@@ -134,7 +134,7 @@ class QuestionCommandServiceTest {
         QuestionUpdateRequest updateRequest = new QuestionUpdateRequest("이름이 뭔가요 ?", updateSkills);
 
         Member anotherMember = Member.builder()
-                .nickName("취준생2")
+                .nickname("취준생2")
                 .providerName("kakao2")
                 .providerId("kakaoId2")
                 .profileImageUri("image2")

@@ -4,14 +4,13 @@ import malohaja.speak.interview.question.domain.entity.Question;
 import malohaja.speak.interview.question.exception.QuestionNotFoundException;
 import malohaja.speak.member.domain.entity.Member;
 import malohaja.speak.member.repository.MemberRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DataJpaTest
 class QuestionRepositoryTest {
@@ -27,7 +26,7 @@ class QuestionRepositoryTest {
     void getByQuestionId(){
         // given
         Member member = Member.builder()
-                .nickName("무지")
+                .nickname("무지")
                 .build();
 
         Member savedMember = memberRepository.save(member);
@@ -52,7 +51,7 @@ class QuestionRepositoryTest {
     void getByInvalidQuestionId(){
         // given
         Member member = Member.builder()
-                .nickName("무지")
+                .nickname("무지")
                 .build();
 
         Member savedMember = memberRepository.save(member);
