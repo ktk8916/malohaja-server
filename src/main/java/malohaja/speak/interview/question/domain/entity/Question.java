@@ -7,9 +7,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import malohaja.speak.global.domain.BaseEntity;
 import malohaja.speak.global.domain.skill.SkillType;
+import malohaja.speak.interview.answer.domain.entity.Answer;
 import malohaja.speak.member.domain.entity.Member;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,6 +26,8 @@ public class Question extends BaseEntity {
     private Set<SkillType> skills = new HashSet<>();
     private String content;
     private int likeCount;
+    @OneToMany(mappedBy = "question")
+    private List<Answer> answers;
 
     public void update(String content, Set<SkillType> skills){
         this.skills = skills;
