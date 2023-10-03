@@ -2,7 +2,9 @@ package malohaja.speak.member.controller;
 
 import lombok.RequiredArgsConstructor;
 import malohaja.speak.global.jwt.TokenInfo;
+import malohaja.speak.member.domain.request.NicknameCheckRequest;
 import malohaja.speak.member.domain.request.SignupRequest;
+import malohaja.speak.member.domain.response.NicknameCheckResponse;
 import malohaja.speak.member.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -22,5 +24,11 @@ public class MemberController {
             @RequestBody SignupRequest signupRequest
     ){
         memberService.signup(tokenInfo, signupRequest);
+    }
+
+    @PostMapping("/nickname/check")
+    @ResponseStatus(HttpStatus.OK)
+    public NicknameCheckResponse nicknameCheck(@RequestBody NicknameCheckRequest request){
+        return memberService.nicknameCheck(request);
     }
 }

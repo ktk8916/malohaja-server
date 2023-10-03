@@ -1,5 +1,7 @@
 package malohaja.speak.member.domain.entity;
 
+import malohaja.speak.member.exception.NoMatchingJobException;
+
 import java.util.Arrays;
 
 public enum JobType {
@@ -18,6 +20,6 @@ public enum JobType {
         return Arrays.stream(JobType.values())
                 .filter(jobType -> jobType.name().equalsIgnoreCase(job))
                 .findFirst()
-                .orElseThrow();
+                .orElseThrow(NoMatchingJobException::new);
     }
 }

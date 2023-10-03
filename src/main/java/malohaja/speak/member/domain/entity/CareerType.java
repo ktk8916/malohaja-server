@@ -1,6 +1,7 @@
 package malohaja.speak.member.domain.entity;
 
 import lombok.Getter;
+import malohaja.speak.member.exception.NoMatchingCareerException;
 
 import java.util.Arrays;
 
@@ -17,6 +18,6 @@ public enum CareerType {
         return Arrays.stream(CareerType.values())
                 .filter(careerType -> careerType.name().equalsIgnoreCase(career))
                 .findFirst()
-                .orElseThrow();
+                .orElseThrow(NoMatchingCareerException::new);
     }
 }
