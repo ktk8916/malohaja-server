@@ -18,8 +18,8 @@ public class JwtService {
     @Value("${jwt.secret}")
     private String secret;
     
-    //access token 유효기간 : 12시간
-    private final long EXPIRATION_DATE = 1000L * 60 * 60 * 12;
+    //access token 유효기간 : 일단 3일
+    private final long EXPIRATION_DATE = 1000L * 60 * 60 * 24 * 3;
 
     public TokenInfo extractUser(String token){
         Claims claims = extractAllClaims(token);
@@ -28,6 +28,8 @@ public class JwtService {
                 .providerName(claims.get("providerName", String.class))
                 .providerId(claims.get("providerId", String.class))
                 .role(Role.valueOf(claims.get("role", String.class)))
+                .profileImageUri((claims.get("profileImageUri", String.class)))
+                .nickname((claims.get("nickname", String.class)))
                 .build();
     }
     private String generateToken(
@@ -48,6 +50,8 @@ public class JwtService {
         extraClaims.put("id", member.getId());
         extraClaims.put("providerName", member.getProviderName());
         extraClaims.put("providerId", member.getProviderId());
+        extraClaims.put("profileImageUri", member.getProfileImageUri());
+        extraClaims.put("nickname", member.getNickname());
         extraClaims.put("role", member.getRole().name());
 
         return generateToken(extraClaims, member);
