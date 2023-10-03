@@ -24,7 +24,7 @@ public class Member extends BaseEntity {
     private String providerName;
     
     //회원정보
-    private String nickName;
+    private String nickname;
     private String introduction;
     private String profileImageUri;
     private Set<SkillType> skills = new HashSet<>();
@@ -35,9 +35,9 @@ public class Member extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private JobType jobType;
 
-    public void signup(String nickName, String introduction, Set<SkillType> skills, CareerType careerType, JobType jobType){
+    public void signup(String nickname, String introduction, Set<SkillType> skills, CareerType careerType, JobType jobType){
         this.role = Role.MEMBER;
-        this.nickName = nickName;
+        this.nickname = nickname;
         this.introduction = introduction;
         this.skills = skills;
         this.careerType = careerType;
@@ -59,10 +59,10 @@ public class Member extends BaseEntity {
     }
 
     @Builder
-    public Member(String providerId, String providerName, String nickName, String profileImageUri, Role role) {
+    public Member(String providerId, String providerName, String nickname, String profileImageUri, Role role) {
         this.providerId = providerId;
         this.providerName = providerName;
-        this.nickName = nickName;
+        this.nickname = nickname;
         this.profileImageUri = profileImageUri;
         this.role = role;
     }
