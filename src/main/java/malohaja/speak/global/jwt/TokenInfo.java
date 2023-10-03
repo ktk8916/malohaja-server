@@ -17,13 +17,17 @@ public class TokenInfo implements UserDetails {
     private String providerName;
     private String providerId;
     private Role role;
+    private String profileImageUri;
+    private String nickname;
 
     @Builder
-    public TokenInfo(Long id, String providerName, String providerId, Role role) {
+    public TokenInfo(Long id, String providerName, String providerId, Role role, String profileImageUri, String nickname) {
         this.id = id;
         this.providerName = providerName;
         this.providerId = providerId;
         this.role = role;
+        this.profileImageUri = profileImageUri;
+        this.nickname = nickname;
     }
 
     @Override
