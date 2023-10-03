@@ -16,7 +16,9 @@ public enum SkillType {
     JAVA(BelongType.LANGUAGE),
     SPRING(BelongType.FRAMEWORK),
     MYSQL(BelongType.DATABASE),
-    GIT(BelongType.ETC);
+    GIT(BelongType.ETC),
+    ETC(BelongType.ETC),
+    ;
 
     private final BelongType belongType;
 
