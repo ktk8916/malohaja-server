@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 public record QuestionCardResponse(
+        Long id,
         String content,
         Set<SkillType> skills,
         MemberDto member,
@@ -19,6 +20,7 @@ public record QuestionCardResponse(
 ) {
     public static QuestionCardResponse of(Question question, List<Answer> bestAnswers){
         return new QuestionCardResponse(
+                question.getId(),
                 question.getContent(),
                 question.getSkills(),
                 MemberDto.fromEntity(question.getMember()),
