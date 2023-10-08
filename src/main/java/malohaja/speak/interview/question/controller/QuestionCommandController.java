@@ -30,10 +30,10 @@ public class QuestionCommandController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public QuestionResponse questionUpdate(
+            @AuthenticationPrincipal TokenInfo tokenInfo,
             @PathVariable("id") Long id,
             @RequestBody QuestionUpdateRequest request
     ){
-        TokenInfo tokenInfo = TokenInfo.builder().id(1L).build();
         return questionCommandService.questionUpdate(id, tokenInfo, request);
     }
 }
