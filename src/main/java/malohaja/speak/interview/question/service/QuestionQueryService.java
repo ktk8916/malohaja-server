@@ -1,10 +1,14 @@
 package malohaja.speak.interview.question.service;
 
 import lombok.RequiredArgsConstructor;
+import malohaja.speak.global.jwt.TokenInfo;
 import malohaja.speak.interview.question.domain.entity.Question;
+import malohaja.speak.interview.question.domain.request.QuestionSearchCondition;
 import malohaja.speak.interview.question.domain.response.QuestionCardResponse;
 import malohaja.speak.interview.question.domain.response.QuestionDetailResponse;
 import malohaja.speak.interview.question.repository.QuestionRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,15 +24,26 @@ public class QuestionQueryService {
         return QuestionDetailResponse.fromEntity(question);
     }
 
-    // 나중에 바꾸자
-    public List<QuestionCardResponse> getByCondition() {
-        List<Question> questions = questionRepository.findAll();
+
+    public List<QuestionCardResponse> getByCondition(QuestionSearchCondition condition, PageRequest pageRequest) {
+        Page<Question> questions = questionRepository.getByCondition(condition, pageRequest);
         return questions.stream()
                 .map(question -> QuestionCardResponse.of(
                         question,
                         question.getAnswers().stream()
                                 .limit(3)
-                                .toList()
-                )).toList();
+                                .toList()))
+                .toList();
+    }
+
+    public List<QuestionCardResponse> getMyBookmark(TokenInfo tokenInfo) {
+        List<Question> questions = questionRepository.getMyBookmarkQuestion(tokenInfo.getId());
+        return questions.stream()
+                .map(question -> QuestionCardResponse.of(
+                        question,
+                        question.getAnswers().stream()
+                                .limit(3)
+                                .toList()))
+                .toList();
     }
 }
