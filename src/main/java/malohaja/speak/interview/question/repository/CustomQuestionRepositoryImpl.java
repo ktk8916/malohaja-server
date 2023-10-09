@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 import static malohaja.speak.interview.answer.domain.entity.QAnswer.answer;
+import static malohaja.speak.interview.question.domain.entity.QBookmark.bookmark;
 import static malohaja.speak.interview.question.domain.entity.QQuestion.question;
 import static malohaja.speak.interview.question.domain.entity.QQuestionSkill.questionSkill;
 
@@ -75,6 +76,16 @@ public class CustomQuestionRepositoryImpl implements CustomQuestionRepository{
                 .fetchOne();
 
         return new PageImpl<>(questions, pageable, totalCount);
+    }
+
+    @Override
+    public List<Question> getMyBookmarkQuestion(Long memberId) {
+        return queryFactory.selectFrom(question)
+                .leftJoin(question.skills, questionSkill)
+                .leftJoin(question.bookmarks, bookmark)
+                .fetchJoin()
+                .where(bookmark.member.id.eq(memberId))
+                .fetch();
     }
 
     private BooleanExpression skillContains(List<String> skills) {
