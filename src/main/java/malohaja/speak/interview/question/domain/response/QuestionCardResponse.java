@@ -4,11 +4,13 @@ import malohaja.speak.global.domain.skill.SkillType;
 import malohaja.speak.interview.answer.domain.dto.AnswerDto;
 import malohaja.speak.interview.answer.domain.entity.Answer;
 import malohaja.speak.interview.question.domain.entity.Question;
+import malohaja.speak.interview.question.domain.entity.QuestionSkill;
 import malohaja.speak.member.domain.dto.MemberDto;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public record QuestionCardResponse(
         Long id,
@@ -22,7 +24,7 @@ public record QuestionCardResponse(
         return new QuestionCardResponse(
                 question.getId(),
                 question.getContent(),
-                question.getSkills(),
+                question.getSkills().stream().map(QuestionSkill::getSkill).collect(Collectors.toSet()),
                 MemberDto.fromEntity(question.getMember()),
                 question.getCreatedAt(),
                 bestAnswers.stream().map(AnswerDto::fromEntity).toList()
