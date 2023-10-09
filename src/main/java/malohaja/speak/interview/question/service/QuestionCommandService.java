@@ -3,12 +3,15 @@ package malohaja.speak.interview.question.service;
 import lombok.RequiredArgsConstructor;
 import malohaja.speak.global.domain.skill.SkillType;
 import malohaja.speak.global.jwt.TokenInfo;
+import malohaja.speak.interview.question.domain.entity.Bookmark;
 import malohaja.speak.interview.question.domain.entity.Question;
 import malohaja.speak.interview.question.domain.entity.QuestionSkill;
 import malohaja.speak.interview.question.domain.request.QuestionCreateRequest;
 import malohaja.speak.interview.question.domain.request.QuestionUpdateRequest;
 import malohaja.speak.interview.question.domain.response.QuestionResponse;
+import malohaja.speak.interview.question.exception.BookmarkNotFoundException;
 import malohaja.speak.interview.question.exception.InvalidQuestionWriterException;
+import malohaja.speak.interview.question.repository.BookmarkRepository;
 import malohaja.speak.interview.question.repository.QuestionRepository;
 import malohaja.speak.member.domain.entity.Member;
 import org.springframework.stereotype.Service;
@@ -25,6 +28,7 @@ import java.util.stream.Collectors;
 public class QuestionCommandService {
 
     private final QuestionRepository questionRepository;
+    private final BookmarkRepository bookmarkRepository;
 
     public QuestionResponse questionCreate(TokenInfo tokenInfo, QuestionCreateRequest request){
         Question question = Question.builder()
@@ -53,6 +57,23 @@ public class QuestionCommandService {
         question.update(request.content(), skills);
 
         return QuestionResponse.fromEntity(question);
+    }
+
+    public void addBookmark(Long questionId, TokenInfo tokenInfo) {
+        Question question = questionRepository.getByQuestionId(questionId);
+        Member member = Member.fromId(tokenInfo.getId());
+
+        Bookmark bookmark = Bookmark.createBookmark(question, member);
+        bookmarkRepository.save(bookmark);
+    }
+    public void removeBookmark(Long questionId, TokenInfo tokenInfo) {
+        Bookmark bookmark = getBookmarkBy(questionId, tokenInfo);
+        bookmarkRepository.delete(bookmark);
+    }
+
+    private Bookmark getBookmarkBy(Long questionId, TokenInfo tokenInfo) {
+        return bookmarkRepository.findByQuestionIdAndMemberId(questionId, tokenInfo.getId())
+                .orElseThrow(BookmarkNotFoundException::new);
     }
 
     private static Set<QuestionSkill> of(Question question, List<String> skills) {
