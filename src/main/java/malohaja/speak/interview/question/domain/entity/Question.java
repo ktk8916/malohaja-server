@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import malohaja.speak.global.domain.BaseEntity;
-import malohaja.speak.global.domain.skill.SkillType;
 import malohaja.speak.interview.answer.domain.entity.Answer;
 import malohaja.speak.member.domain.entity.Member;
 
@@ -23,21 +22,33 @@ public class Question extends BaseEntity {
     private Long id;
     @ManyToOne
     private Member member;
-    private Set<SkillType> skills = new HashSet<>();
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<QuestionSkill> skills = new HashSet<>();
     private String content;
     private int likeCount;
     @OneToMany(mappedBy = "question")
     private List<Answer> answers;
 
-    public void update(String content, Set<SkillType> skills){
-        this.skills = skills;
+    public void update(String content, Set<QuestionSkill> skills){
+        this.skills.clear();
+        this.skills.addAll(skills);
         this.content = content;
     }
 
+    public void setSkills(Set<QuestionSkill> skills) {
+        this.skills = skills;
+    }
+
     @Builder
-    public Question(Member member, Set<SkillType> skills, String content) {
+    public Question(Member member, Set<QuestionSkill> skills, String content) {
         this.member = member;
         this.content = content;
         this.skills = skills;
+    }
+
+    public static Question fromId(Long id){
+        Question question = new Question();
+        question.id = id;
+        return question;
     }
 }
