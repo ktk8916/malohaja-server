@@ -13,14 +13,12 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public enum SkillType {
 
-    JAVA(BelongType.LANGUAGE),
-    SPRING(BelongType.FRAMEWORK),
-    MYSQL(BelongType.DATABASE),
-    GIT(BelongType.ETC),
-    ETC(BelongType.ETC),
+    JAVA,
+    SPRING,
+    MYSQL,
+    GIT,
+    ETC,
     ;
-
-    private final BelongType belongType;
 
     public static SkillType fromString(String skill){
         return Arrays.stream(SkillType.values())
