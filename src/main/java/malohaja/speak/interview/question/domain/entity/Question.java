@@ -28,6 +28,8 @@ public class Question extends BaseEntity {
     private int likeCount;
     @OneToMany(mappedBy = "question")
     private List<Answer> answers;
+    @OneToMany(mappedBy = "question")
+    private List<Bookmark> bookmarks;
 
     public void update(String content, Set<QuestionSkill> skills){
         this.skills.clear();
